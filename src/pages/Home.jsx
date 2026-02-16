@@ -10,7 +10,10 @@ import img19Outside from '../assets/portfolio/img19-outside.jpg';
 import img8Inside from '../assets/portfolio/img8-inside.jpg';
 import img10Inside from '../assets/portfolio/img10-inside.jpg';
 import img11Inside from '../assets/portfolio/img11-inside.jpg'; 
-import img4Inside from '../assets/portfolio/img4-inside.jpg';   
+import img4Inside from '../assets/portfolio/img4-inside.jpg'; 
+import dryling from "../assets/portfolio/dryling.jpeg";
+import internal from "../assets/portfolio/inernalplaster.jpeg"
+import pendering from "../assets/portfolio/pendering.jpeg"  
 
 // Leaflet Icon Fix
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
@@ -50,9 +53,9 @@ const Home = () => {
   ];
 
   const services = [
-    { title: 'Internal Skimming', desc: 'Achieving a mirror-smooth finish ready for high-end decorating.', img: img11Inside },
-    { title: 'External Rendering', desc: 'Weatherproof, durable, and aesthetically stunning exterior solutions.', img: img1Outside },
-    { title: 'Dry Lining', desc: 'Modern boarding techniques for perfect alignment and insulation.', img: img4Inside },
+    { title: 'Internal Skimming', desc: 'Achieving a mirror-smooth finish ready for high-end decorating.', img: internal },
+    { title: 'External Rendering', desc: 'Weatherproof, durable, and aesthetically stunning exterior solutions.', img: pendering },
+    { title: 'Dry Lining', desc: 'Modern boarding techniques for perfect alignment and insulation.', img: dryling },
   ];
 
   return (
