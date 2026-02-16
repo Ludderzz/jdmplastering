@@ -66,7 +66,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-amber-500 text-xs font-black uppercase tracking-widest mb-1">Location</p>
-                    <p className="text-xl font-bold">Clevedon, North Somerset</p>
+                    <p className="text-xl font-bold">Nailsea, North Somerset</p>
                   </div>
                   <div>
                     <p className="text-amber-500 text-xs font-black uppercase tracking-widest mb-1">Working Hours</p>
