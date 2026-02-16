@@ -134,19 +134,24 @@ const Home = () => {
         </div>
       </section>
 
-      {/* --- SPECIALIST SERVICES LIST (Simplified) --- */}
+{/* --- SPECIALIST SERVICES LIST --- */}
       <section className="py-12 bg-white px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="bg-slate-50 p-8 md:p-16 rounded-3xl border border-slate-100">
-             <div className="text-center mb-12">
-                <h2 className="text-sm font-black text-amber-600 uppercase tracking-[0.4em] mb-4">Our Expertise</h2>
-                <h3 className="text-3xl md:text-5xl font-black text-slate-900 uppercase">Specialist Solutions</h3>
+          <div className="bg-slate-900 p-8 md:p-16 rounded-3xl shadow-2xl relative overflow-hidden">
+             {/* Decorative glow */}
+             <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl"></div>
+             
+             <div className="text-center mb-12 relative z-10">
+                <h2 className="text-sm font-black text-amber-500 uppercase tracking-[0.4em] mb-4">Our Expertise</h2>
+                <h3 className="text-3xl md:text-5xl font-black text-white uppercase">Specialist Solutions</h3>
              </div>
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 relative z-10">
                 {specialistList.map((item, index) => (
-                  <div key={index} className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-sm border border-slate-100 group hover:border-amber-500 transition-all">
-                    <div className="w-1.5 h-1.5 bg-amber-500 rounded-full group-hover:scale-150 transition-transform"></div>
-                    <span className="text-xs font-bold text-slate-700 uppercase tracking-tight">{item}</span>
+                  <div key={index} className="flex items-center justify-center text-center p-4 bg-amber-500 rounded-xl shadow-lg border-b-4 border-amber-600 group hover:bg-white transition-all duration-300 transform hover:-translate-y-1">
+                    <span className="text-xs md:text-sm font-black text-slate-900 uppercase tracking-tight group-hover:text-amber-600 transition-colors">
+                      {item}
+                    </span>
                   </div>
                 ))}
              </div>
