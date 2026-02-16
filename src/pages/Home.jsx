@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
 // Asset Imports
-import heroImg from '../assets/hero.png';
+import heroImg from '../assets/portfolio/test.jpeg';
 import img1Outside from '../assets/portfolio/img1-outside.jpg';
 import img19Outside from '../assets/portfolio/img19-outside.jpg';
 import img8Inside from '../assets/portfolio/img8-inside.jpg';
@@ -57,15 +57,16 @@ const Home = () => {
 
   return (
     <div className="bg-white overflow-x-hidden">
-      {/* --- HERO SECTION: UNTOUCHED --- */}
-      <section className="relative min-h-screen flex items-center overflow-hidden py-20">
+      {/* --- HERO SECTION: SERVICES REMOVED TO SHOW IMAGE --- */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden py-20">
         <div className="absolute inset-0 z-0">
           <img 
             src={heroImg} 
             alt="JDM Plastering Hero" 
             className="w-full h-full object-cover scale-105 animate-subtle-zoom"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/40 to-transparent"></div>
+          {/* Lighter shadow to show more of the image */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/60 via-slate-900/20 to-transparent"></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-12 lg:px-20 text-white w-full">
@@ -77,21 +78,10 @@ const Home = () => {
               </span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] mb-8 tracking-tighter">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-[0.85] mb-12 tracking-tighter">
               MASTER <br />
               <span className="text-transparent stroke-text">CRAFTSMANSHIP</span>
             </h1>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3 mb-12 bg-white/5 backdrop-blur-md p-6 rounded-sm border-l-4 border-amber-500 max-w-3xl">
-              {specialistList.map((item, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <svg className="w-4 h-4 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-sm md:text-base font-medium text-slate-100 tracking-wide uppercase">{item}</span>
-                </div>
-              ))}
-            </div>
             
             <div className="flex flex-wrap gap-5">
               <Link to="/contact" className="px-10 py-5 bg-amber-500 text-slate-900 font-black rounded-sm hover:bg-white transition-colors duration-300 uppercase text-sm tracking-widest shadow-xl">
@@ -105,7 +95,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* --- ADDED: BRAND TICKER (The Sliding Bar) --- */}
+      {/* --- BRAND TICKER --- */}
       <div className="bg-slate-900 py-8 border-y border-white/5 flex whitespace-nowrap overflow-hidden">
         <div className="animate-ticker flex gap-16 md:gap-32 items-center px-4">
           {['BRITISH GYPSUM', 'K-REND', 'WEBER', 'KNAUF', 'SINIAT', 'SANDTOFT'].map((brand, i) => (
@@ -142,7 +132,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* --- ADDED: PRECISION COMPARISON SECTION --- */}
+      {/* --- PRECISION SECTION --- */}
       <section className="py-24 bg-white px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -155,27 +145,24 @@ const Home = () => {
                 We go beyond the surface. By utilizing high-tensile mesh, premium base coats, and dust-free technology, we deliver a finish that doesn't just look good today—it lasts for decades.
               </p>
             </div>
-            <div className="grid gap-4">
-              {[
-                "High-Tensile Reinforcement Mesh",
-                "Laser-Level Perfect Bead Alignment",
-                "Specialist Moisture Barrier Systems",
-                "Premium Monocouche & Thin Coat Renders",
-                "Clean Site Guarantee"
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-4 p-5 bg-slate-50 rounded-xl border border-slate-100 group hover:border-amber-500 transition-colors">
-                  <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center flex-shrink-0 group-hover:bg-amber-500 transition-colors">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" /></svg>
+
+            {/* MOVED SPECIALIST LIST HERE: Clear, professional, and easy to read */}
+            <div className="bg-slate-900 p-8 md:p-12 rounded-2xl shadow-2xl">
+              <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-8 border-b border-white/10 pb-4">Specialist Solutions</h4>
+              <div className="grid grid-cols-1 gap-4">
+                {specialistList.map((item, index) => (
+                  <div key={index} className="flex items-center gap-4 group">
+                    <div className="w-2 h-2 bg-amber-500 rounded-full group-hover:scale-150 transition-transform"></div>
+                    <span className="text-sm md:text-base font-bold text-slate-300 group-hover:text-white transition-colors uppercase tracking-tight">{item}</span>
                   </div>
-                  <span className="font-black text-slate-900 uppercase text-xs tracking-widest">{item}</span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- SERVICES SECTION (OUR EXPERTISE) --- */}
+      {/* --- SERVICES SECTION (PROCESS) --- */}
       <section className="py-32 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-20">
