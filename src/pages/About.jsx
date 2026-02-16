@@ -193,7 +193,7 @@ const About = () => {
                     <Popup>
                       <div className="text-center">
                         <strong className="text-slate-900">JDM Plastering</strong><br/>
-                        <span className="text-xs text-slate-500 font-bold uppercase">Clevedon HQ</span>
+                        <span className="text-xs text-slate-500 font-bold uppercase">Nailsea HQ</span>
                       </div>
                     </Popup>
                   </Marker>

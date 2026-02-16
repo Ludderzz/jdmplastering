@@ -219,7 +219,7 @@ We focus on what’s beneath the finish. By using high-tensile reinforcement mes
                 LOCAL <br/> <span className="text-amber-500 text-4xl uppercase">Craftsmanship</span>
               </h3>
               <p className="text-slate-600 text-lg font-light mb-10 leading-relaxed">
-                Based in <span className="font-bold text-slate-900">Clevedon</span>, we travel across the West Country providing premium internal and external finishes.
+                Based in <span className="font-bold text-slate-900">Nailsea</span>, we travel across the West Country providing premium internal and external finishes.
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {['Clevedon', 'Bristol', 'Portishead', 'Nailsea', 'Weston', 'Yatton'].map((area) => (

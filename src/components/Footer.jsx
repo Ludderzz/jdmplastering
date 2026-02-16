@@ -49,10 +49,14 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-8">What We Do</h4>
             <ul className="space-y-4 text-sm font-light">
-              <li className="hover:text-slate-300 transition-colors cursor-default">Internal Skimming</li>
-              <li className="hover:text-slate-300 transition-colors cursor-default">Modern Rendering</li>
-              <li className="hover:text-slate-300 transition-colors cursor-default">Dry Lining</li>
-              <li className="hover:text-slate-300 transition-colors cursor-default">Artex Over-boarding</li>
+              <li className="hover:text-slate-300 transition-colors cursor-default">British Gypsum Plastering</li>
+              <li className="hover:text-slate-300 transition-colors cursor-default">Traditional Internal Lime Plastering</li>
+              <li className="hover:text-slate-300 transition-colors cursor-default">Damp Proofing</li>
+              <li className="hover:text-slate-300 transition-colors cursor-default">Original Sand & Cement Rendering</li>
+              <li className="hover:text-slate-300 transition-colors cursor-default">Traditional Lime Rendering</li>
+              <li className="hover:text-slate-300 transition-colors cursor-default">Webber Monocouche Rendering</li>
+              <li className="hover:text-slate-300 transition-colors cursor-default">OCR Render</li>
+              <li className="hover:text-slate-300 transition-colors cursor-default">K Rend Thin Coat Grit Render</li>
             </ul>
           </div>
 
@@ -62,16 +66,13 @@ const Footer = () => {
             <ul className="space-y-6 text-sm">
               <li className="flex items-center gap-4">
                 <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-amber-500 border border-white/5">📍</div>
-                <span className="font-light">Clevedon & Bristol</span>
+                <span className="font-light">Nailsea & Bristol</span>
               </li>
               <li className="flex items-center gap-4">
                 <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-amber-500 border border-white/5">📞</div>
                 <span className="font-bold text-slate-300">07896 560566</span>
               </li>
-              <li className="flex items-center gap-4">
-                <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-amber-500 border border-white/5">✉️</div>
-                <span className="font-light">info@jdmplastering.com</span>
-              </li>
+              
             </ul>
           </div>
         </div>
