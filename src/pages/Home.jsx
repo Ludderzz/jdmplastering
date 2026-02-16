@@ -43,7 +43,6 @@ const Home = () => {
     "Webber Monocouche Rendering",
     "OCR Render",
     "K Rend Thin Coat Grit Render",
-  
   ];
 
   const featured = [
@@ -60,8 +59,8 @@ const Home = () => {
   ];
 
   return (
-    <div className="bg-white overflow-x-hidden">
-      {/* --- HERO SECTION: SERVICES REMOVED TO SHOW IMAGE --- */}
+    <div className="bg-white overflow-x-hidden antialiased">
+      {/* --- HERO SECTION --- */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden py-20">
         <div className="absolute inset-0 z-0">
           <img 
@@ -69,7 +68,6 @@ const Home = () => {
             alt="JDM Plastering Hero" 
             className="w-full h-full object-cover scale-105 animate-subtle-zoom"
           />
-          {/* Lighter shadow to show more of the image */}
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/60 via-slate-900/20 to-transparent"></div>
         </div>
 
@@ -118,7 +116,7 @@ const Home = () => {
       </div>
 
       {/* --- FLOATING STATS BAR --- */}
-      <section className="relative z-20 -mt-12 px-4">
+      <section className="relative z-20 -mt-12 px-4 mb-24">
         <div className="max-w-6xl mx-auto bg-slate-900 border border-white/10 shadow-2xl rounded-xl p-8 md:p-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
@@ -136,37 +134,28 @@ const Home = () => {
         </div>
       </section>
 
-      {/* --- PRECISION SECTION --- */}
-      <section className="py-24 bg-white px-6">
+      {/* --- SPECIALIST SERVICES LIST (Simplified) --- */}
+      <section className="py-12 bg-white px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-sm font-black text-amber-600 uppercase tracking-[0.4em] mb-4">Precision is everything</h2>
-              <h3 className="text-4xl md:text-7xl font-black text-slate-900 tracking-tighter leading-none mb-8 uppercase">
-                A FINISH THAT <br/> STANDS THE <br/> <span className="text-amber-500 italic">TEST OF TIME.</span>
-              </h3>
-              <p className="text-slate-500 text-lg mb-10 leading-relaxed max-w-lg">
-We focus on what’s beneath the finish. By using high-tensile reinforcement mesh and premium-grade base coats, we ensure a structurally sound application designed for superior durability and a flawless aesthetic.              </p>
-            </div>
-
-            {/* MOVED SPECIALIST LIST HERE: Clear, professional, and easy to read */}
-            <div className="bg-slate-900 p-8 md:p-12 rounded-2xl shadow-2xl">
-              <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-8 border-b border-white/10 pb-4">Specialist Solutions</h4>
-              <div className="grid grid-cols-1 gap-4">
+          <div className="bg-slate-50 p-8 md:p-16 rounded-3xl border border-slate-100">
+             <div className="text-center mb-12">
+                <h2 className="text-sm font-black text-amber-600 uppercase tracking-[0.4em] mb-4">Our Expertise</h2>
+                <h3 className="text-3xl md:text-5xl font-black text-slate-900 uppercase">Specialist Solutions</h3>
+             </div>
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {specialistList.map((item, index) => (
-                  <div key={index} className="flex items-center gap-4 group">
-                    <div className="w-2 h-2 bg-amber-500 rounded-full group-hover:scale-150 transition-transform"></div>
-                    <span className="text-sm md:text-base font-bold text-slate-300 group-hover:text-white transition-colors uppercase tracking-tight">{item}</span>
+                  <div key={index} className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-sm border border-slate-100 group hover:border-amber-500 transition-all">
+                    <div className="w-1.5 h-1.5 bg-amber-500 rounded-full group-hover:scale-150 transition-transform"></div>
+                    <span className="text-xs font-bold text-slate-700 uppercase tracking-tight">{item}</span>
                   </div>
                 ))}
-              </div>
-            </div>
+             </div>
           </div>
         </div>
       </section>
 
       {/* --- SERVICES SECTION (PROCESS) --- */}
-      <section className="py-32 bg-slate-50">
+      <section className="py-32 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-20">
             <h2 className="text-sm font-black text-amber-600 uppercase tracking-[0.3em] mb-4">The Process</h2>
@@ -176,11 +165,11 @@ We focus on what’s beneath the finish. By using high-tensile reinforcement mes
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {services.map((service, i) => (
               <div key={i} className="group relative">
-                <div className="mb-8 overflow-hidden rounded-lg bg-slate-900 aspect-video flex items-center justify-center relative">
+                <div className="mb-8 overflow-hidden rounded-lg bg-slate-900 aspect-video flex items-center justify-center relative shadow-xl">
                   <img 
                     src={service.img} 
                     alt={service.title} 
-                    className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-70 group-hover:scale-110 transition-all duration-700"
+                    className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-110 transition-all duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
                   <span className="relative z-10 text-6xl font-black text-white/20 group-hover:text-amber-500/80 transition-colors duration-500">0{i+1}</span>
@@ -195,7 +184,7 @@ We focus on what’s beneath the finish. By using high-tensile reinforcement mes
       </section>
 
       {/* --- SERVICE AREA SECTION (MAP) --- */}
-      <section className="py-32 bg-white overflow-hidden">
+      <section className="py-32 bg-slate-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative order-2 lg:order-1">
@@ -208,7 +197,7 @@ We focus on what’s beneath the finish. By using high-tensile reinforcement mes
                   >
                     <TileLayer url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png" />
                     <Polygon positions={serviceBoundary} pathOptions={{ fillColor: '#f59e0b', color: '#d97706', weight: 3, fillOpacity: 0.2 }} />
-                    <Marker position={[51.42911035087187, -2.76282666116349]}><Popup><strong>JDM Plastering HQ</strong></Popup></Marker>
+                    <Marker position={[51.4291, -2.7628]}><Popup><strong>JDM Plastering HQ</strong></Popup></Marker>
                   </MapContainer>
                 </div>
               </div>
