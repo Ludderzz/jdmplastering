@@ -12,7 +12,7 @@ import img10Inside from '../assets/portfolio/img10-inside.jpg';
 import img11Inside from '../assets/portfolio/img11-inside.jpg'; 
 import img4Inside from '../assets/portfolio/img4-inside.jpg'; 
 import dryling from "../assets/portfolio/dryling.jpeg";
-import internal from "../assets/portfolio/inernalplaster.jpeg"
+import internal from "../assets/portfolio/inernalplastering.jpeg"
 import pendering from "../assets/portfolio/pendering.jpeg"  
 
 // Leaflet Icon Fix
@@ -35,25 +35,26 @@ const Home = () => {
   ];
 
   const specialistList = [
-    "Original Sand & Cement Rendering",
-    "Traditional Lime Rendering",
     "British Gypsum Plastering",
     "Traditional Internal Lime Plastering",
     "Damp Proofing",
+    "Original Sand & Cement Rendering",
+    "Traditional Lime Rendering",
     "Webber Monocouche Rendering",
+    "OCR Render",
     "K Rend Thin Coat Grit Render",
-    "OCR Render"
+  
   ];
 
   const featured = [
     { img: img1Outside, title: 'External Rendering', cat: 'Exterior', size: 'md:col-span-2' },
     { img: img19Outside, title: 'Modern Facade', cat: 'Exterior', size: 'md:col-span-1' },
-    { img: img8Inside, title: 'Smooth Skimming', cat: 'Interior', size: 'md:col-span-1' },
+    { img: img8Inside, title: 'Smooth Plastering', cat: 'Interior', size: 'md:col-span-1' },
     { img: img10Inside, title: 'Complete Refurb', cat: 'Interior', size: 'md:col-span-2' },
   ];
 
   const services = [
-    { title: 'Internal Skimming', desc: 'Achieving a mirror-smooth finish ready for high-end decorating.', img: internal },
+    { title: 'Internal Plastering', desc: 'Achieving a mirror-smooth finish ready for high-end decorating.', img: internal },
     { title: 'External Rendering', desc: 'Weatherproof, durable, and aesthetically stunning exterior solutions.', img: pendering },
     { title: 'Dry Lining', desc: 'Modern boarding techniques for perfect alignment and insulation.', img: dryling },
   ];
@@ -145,8 +146,7 @@ const Home = () => {
                 A FINISH THAT <br/> STANDS THE <br/> <span className="text-amber-500 italic">TEST OF TIME.</span>
               </h3>
               <p className="text-slate-500 text-lg mb-10 leading-relaxed max-w-lg">
-                We go beyond the surface. By utilizing high-tensile mesh, premium base coats, and dust-free technology, we deliver a finish that doesn't just look good today—it lasts for decades.
-              </p>
+We focus on what’s beneath the finish. By using high-tensile reinforcement mesh and premium-grade base coats, we ensure a structurally sound application designed for superior durability and a flawless aesthetic.              </p>
             </div>
 
             {/* MOVED SPECIALIST LIST HERE: Clear, professional, and easy to read */}
