@@ -208,7 +208,7 @@ We focus on what’s beneath the finish. By using high-tensile reinforcement mes
                   >
                     <TileLayer url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png" />
                     <Polygon positions={serviceBoundary} pathOptions={{ fillColor: '#f59e0b', color: '#d97706', weight: 3, fillOpacity: 0.2 }} />
-                    <Marker position={[51.4393, -2.8555]}><Popup><strong>JDM Plastering HQ</strong></Popup></Marker>
+                    <Marker position={[51.42911035087187, -2.76282666116349]}><Popup><strong>JDM Plastering HQ</strong></Popup></Marker>
                   </MapContainer>
                 </div>
               </div>
