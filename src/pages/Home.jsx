@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
-import { MapContainer, TileLayer, Polygon, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+import { lazy, Suspense } from 'react'; // Added for the lazy loader
 import { Helmet } from 'react-helmet-async'; 
 
 // Asset Imports
@@ -14,34 +12,21 @@ import dryling from "../assets/portfolio/dryling.webp";
 import internal from "../assets/portfolio/inernalplastering.webp"
 import pendering from "../assets/portfolio/pendering.webp"  
 
-// Leaflet Icon Fix
-import markerIcon from 'leaflet/dist/images/marker-icon.png';
-import markerShadow from 'leaflet/dist/images/marker-shadow.png';
-let DefaultIcon = L.icon({
-    iconUrl: markerIcon,
-    shadowUrl: markerShadow,
-    iconSize: [25, 41],
-    iconAnchor: [12, 41]
-});
-L.Marker.prototype.options.icon = DefaultIcon;
+// The Performance Secret: Only load the map when the browser is idle/scrolled
+const MapComponent = lazy(() => import('../components/ServiceMap'));
 
 const Home = () => {
   const mapCenter = [51.4600, -2.7200]; 
-
   const serviceBoundary = [
     [51.6050, -2.6300], [51.5500, -2.5500], [51.4100, -2.4800], 
     [51.2900, -2.9800], [51.3500, -3.0500], [51.4400, -3.0200], [51.5200, -2.7800], 
   ];
 
   const specialistList = [
-    "British Gypsum Plastering",
-    "Traditional Internal Lime Plastering",
-    "Professional Damp Proofing",
-    "Original Sand & Cement Rendering",
-    "Traditional Lime Rendering",
-    "Webber Monocouche Rendering",
-    "OCR Render Specialists",
-    "K Rend Thin Coat Grit Render",
+    "British Gypsum Plastering", "Traditional Internal Lime Plastering",
+    "Professional Damp Proofing", "Original Sand & Cement Rendering",
+    "Traditional Lime Rendering", "Webber Monocouche Rendering",
+    "OCR Render Specialists", "K Rend Thin Coat Grit Render",
   ];
 
   const featured = [
@@ -62,55 +47,21 @@ const Home = () => {
       <Helmet>
         <title>JDM Plastering | Expert Plastering & Rendering Nailsea & Clevedon</title>
         <meta name="description" content="Professional plastering and rendering in Nailsea, Clevedon, and Bristol. Over 15 years experience in K-Rend, Monocouche, and traditional plastering." />
-        <link rel="canonical" href="https://yourwebsite.com" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "PlasteringBusiness",
-            "name": "JDM Plastering",
-            "image": "https://yourwebsite.com/og-image.jpg",
-            "@id": "https://yourwebsite.com",
-            "url": "https://yourwebsite.com",
-            "telephone": "+447896560566", 
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Nailsea Area",
-              "addressLocality": "Nailsea",
-              "addressRegion": "North Somerset",
-              "postalCode": "BS48",
-              "addressCountry": "GB"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": 51.4291,
-              "longitude": -2.7628
-            },
-            "servesCrawl": ["Nailsea", "Clevedon", "Bristol", "Portishead", "Weston-super-Mare"],
-            "priceRange": "££"
-          })}
-        </script>
       </Helmet>
 
       {/* --- HERO SECTION --- */}
-      {/* --- OPTIMIZED HERO SECTION --- */}
-<section className="relative min-h-[90vh] flex items-center overflow-hidden py-20">
-  <div className="absolute inset-0 z-0">
-    <img 
-      src={heroImg} 
-      alt="High quality plastering services in Nailsea and Clevedon" 
-      /* CRITICAL PERFORMANCE FIXES:
-         1. fetchpriority="high" tells the browser to download this FIRST.
-         2. loading="eager" prevents the browser from waiting to see if it's in view.
-         3. decoding="async" allows the rest of the page to render while the image processes.
-      */
-      fetchpriority="high"
-      loading="eager"
-      decoding="async"
-      className="w-full h-full object-cover scale-105 animate-subtle-zoom"
-    />
-    <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent"></div>
-  </div>
-  {/* Rest of your hero content... */}
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden py-20">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={heroImg} 
+            alt="High quality plastering services in Nailsea and Clevedon" 
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
+            className="w-full h-full object-cover scale-105 animate-subtle-zoom"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent"></div>
+        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-12 lg:px-20 text-white w-full">
           <div className="max-w-4xl">
@@ -204,6 +155,7 @@ const Home = () => {
                   <img 
                     src={service.img} 
                     alt={`${service.title} specialist in Nailsea area`} 
+                    loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-90 group-hover:scale-110 transition-all duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent"></div>
@@ -223,15 +175,11 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative order-2 lg:order-1">
               <div className="relative z-10 p-4 bg-white shadow-2xl rounded-3xl">
-                <div className="h-[450px] w-full rounded-2xl overflow-hidden shadow-inner">
-                  <MapContainer 
-                    center={mapCenter} zoom={10} scrollWheelZoom={false} 
-                    style={{ height: '100%', width: '100%' }}
-                  >
-                    <TileLayer url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png" />
-                    <Polygon positions={serviceBoundary} pathOptions={{ fillColor: '#f59e0b', color: '#d97706', weight: 3, fillOpacity: 0.2 }} />
-                    <Marker position={[51.4291, -2.7628]}><Popup><strong>JDM Plastering HQ - Nailsea</strong></Popup></Marker>
-                  </MapContainer>
+                <div className="h-[450px] w-full rounded-2xl overflow-hidden shadow-inner bg-slate-100">
+                  {/* LAZY LOADED MAP WRAPPER */}
+                  <Suspense fallback={<div className="w-full h-full flex items-center justify-center animate-pulse text-slate-400 font-bold uppercase">Loading Area Map...</div>}>
+                    <MapComponent center={mapCenter} boundary={serviceBoundary} />
+                  </Suspense>
                 </div>
               </div>
             </div>
@@ -264,11 +212,11 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featured.map((item, i) => (
               <article key={i} className={`${item.size} group relative h-[400px] overflow-hidden rounded-lg shadow-2xl`}>
-                <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" />
+                <img src={item.img} alt={item.title} loading="lazy" className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-slate-900/40"></div>
                 <div className="absolute bottom-8 left-8">
-                   <p className="text-amber-500 text-xs font-bold uppercase mb-2">{item.cat}</p>
-                   <h4 className="text-white text-2xl font-bold">{item.title}</h4>
+                    <p className="text-amber-500 text-xs font-bold uppercase mb-2">{item.cat}</p>
+                    <h4 className="text-white text-2xl font-bold">{item.title}</h4>
                 </div>
               </article>
             ))}
@@ -287,12 +235,8 @@ const Home = () => {
       </section>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        .stroke-text { 
-          -webkit-text-stroke: 2px white; 
-        }
-        @media (max-width: 768px) {
-          .stroke-text { -webkit-text-stroke: 1px white; }
-        }
+        .stroke-text { -webkit-text-stroke: 2px white; }
+        @media (max-width: 768px) { .stroke-text { -webkit-text-stroke: 1px white; } }
         @keyframes subtle-zoom { from { transform: scale(1.05); } to { transform: scale(1.15); } }
         .animate-subtle-zoom { animation: subtle-zoom 20s infinite alternate linear; }
         @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
