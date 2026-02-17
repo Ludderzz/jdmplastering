@@ -3,7 +3,7 @@ import { lazy, Suspense } from 'react';
 import { Helmet } from 'react-helmet-async'; 
 
 // Asset Imports
-import heroImg from '../assets/portfolio/test.jpeg';
+import heroImg from '../assets/portfolio/test.webp';
 import img1Outside from '../assets/portfolio/img1-outside.webp';
 import img19Outside from '../assets/portfolio/img19-outside.webp';
 import img8Inside from '../assets/portfolio/img8-inside.webp';
