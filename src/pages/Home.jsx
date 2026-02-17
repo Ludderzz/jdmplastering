@@ -12,7 +12,7 @@ import dryling from "../assets/portfolio/dryling.webp";
 import internal from "../assets/portfolio/inernalplastering.webp";
 import pendering from "../assets/portfolio/pendering.webp";
 
-// Lazy Load the Map component
+// Lazy Load the Map component - isolated from main bundle
 const MapComponent = lazy(() => import('../components/ServiceMap'));
 
 const Home = () => {
@@ -48,6 +48,9 @@ const Home = () => {
         <title>JDM Plastering | Expert Plastering & Rendering Nailsea & Clevedon</title>
         <meta name="description" content="Professional plastering and rendering in Nailsea, Clevedon, and Bristol. Over 15 years experience." />
         
+        {/* CRITICAL MOBILE FIX: Preload the hero image before the browser even parses the body */}
+        <link rel="preload" as="image" href={heroImg} fetchpriority="high" />
+
         {/* SPEED BOOST: Pre-connect to Map Tile Servers */}
         <link rel="preconnect" href="https://a.basemaps.cartocdn.com" />
         <link rel="preconnect" href="https://b.basemaps.cartocdn.com" />
@@ -62,6 +65,7 @@ const Home = () => {
             alt="High quality plastering services" 
             fetchpriority="high"
             loading="eager"
+            decoding="async"
             className="w-full h-full object-cover scale-105 animate-subtle-zoom"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent"></div>
@@ -150,12 +154,11 @@ const Home = () => {
         </div>
       </section>
 
-      {/* --- MAP SECTION: CLS SHIFT FIX --- */}
+      {/* --- MAP SECTION --- */}
       <section className="py-32 bg-slate-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative order-2 lg:order-1">
             <div className="p-4 bg-white shadow-2xl rounded-3xl">
-              {/* STICKY CONTAINER: Prevents layout shift */}
               <div className="relative h-[450px] w-full rounded-2xl overflow-hidden bg-slate-100 shadow-inner">
                 <Suspense fallback={
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -168,7 +171,7 @@ const Home = () => {
             </div>
           </div>
           <div className="order-1 lg:order-2">
-            <h2 className="text-5xl font-black text-slate-900 mb-6 tracking-tighter">SERVICING <br/> <span className="text-amber-500 text-4xl uppercase font-bold">NORTH SOMERSET</span></h2>
+            <h2 className="text-5xl font-black text-slate-900 mb-6 tracking-tighter uppercase">Servicing <br/> <span className="text-amber-500 text-4xl font-bold">North Somerset</span></h2>
             <div className="grid grid-cols-2 gap-4">
               {['Clevedon', 'Bristol', 'Portishead', 'Nailsea', 'Weston', 'Yatton'].map((area) => (
                 <div key={area} className="flex items-center gap-3 font-bold text-slate-700 uppercase text-xs tracking-widest">
