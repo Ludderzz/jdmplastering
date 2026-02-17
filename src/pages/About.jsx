@@ -39,19 +39,19 @@ const About = () => {
   ];
 
   return (
-    <div className="bg-white max-w-full overflow-x-hidden relative">
+    /* REMOVED overflow-x-hidden here to fix the sticky Navbar */
+    <div className="bg-white relative">
       <Helmet>
         <title>About JDM Plastering | Coloured Rendering Specialists Nailsea</title>
         <meta name="description" content="15+ years of excellence in internal plastering and coloured rendering. Serving Nailsea, Clevedon, and Bristol with premium Weber and K-Rend finishes." />
         
-        {/* SERVICE AREA & SPECIALIST SCHEMA */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "PlasteringBusiness",
             "name": "JDM Plastering",
             "description": "Specialist internal plastering and coloured rendering services in North Somerset.",
-            "url": "https://yourwebsite.com/about", // UPDATE TO YOUR ACTUAL DOMAIN
+            "url": "https://yourwebsite.com/about", 
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Nailsea",
@@ -244,12 +244,7 @@ const About = () => {
       </section>
 
       <style dangerouslySetInnerHTML={{ __html: `
-        html, body {
-          width: 100%;
-          overflow-x: hidden !important;
-          position: relative;
-          touch-action: pan-y;
-        }
+        /* Ensure horizontal scrolling is handled at the body level to protect sticky headers */
         .leaflet-container { z-index: 1 !important; }
       `}} />
     </div>

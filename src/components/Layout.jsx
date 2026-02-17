@@ -18,8 +18,8 @@ const Layout = () => {
         We wrap Nav and TopBar together so they stick as one unit.
         z-[100] ensures it stays above all page content.
       */}
-      <header className="sticky top-0 z-[100] w-full bg-white shadow-sm">
-        <Navbar />
+        <header className="sticky top-0 z-[9999] w-full bg-white shadow-sm"> 
+         <Navbar />
         <TopBar />
       </header>
 

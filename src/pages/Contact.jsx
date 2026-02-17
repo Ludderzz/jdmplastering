@@ -29,12 +29,12 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-white max-w-full overflow-x-hidden touch-pan-y">
+    /* FIXED: Removed overflow-x-hidden to allow sticky Navbar to function */
+    <div className="bg-white relative">
       <Helmet>
         <title>Get a Free Quote | JDM Plastering Nailsea & Clevedon</title>
         <meta name="description" content="Contact JDM Plastering for a free quote on internal plastering, external rendering, or dry lining in Nailsea, Clevedon, and across North Somerset." />
         
-        {/* LOCAL BUSINESS CONTACT SCHEMA */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -86,8 +86,8 @@ const Contact = () => {
                 <h3 className="text-2xl font-black mb-8 border-b border-white/10 pb-4">Direct Contact</h3>
                 <div className="space-y-8">
                   <div>
-                    <p className="text-amber-500 text-xs font-black uppercase tracking-widest mb-1">Call / Text</p>
-                    <a href="tel:07896560566" className="text-xl font-bold hover:text-amber-500 transition-colors">07896 560566</a>
+                    <p className="text-amber-500 text-xs font-black uppercase tracking-widest mb-1 text-sky-400">Call / Text</p>
+                    <a href="tel:07896560566" className="text-xl font-bold hover:text-amber-500 transition-colors underline decoration-amber-500/30">07896 560566</a>
                   </div>
                   <div>
                     <p className="text-amber-500 text-xs font-black uppercase tracking-widest mb-1">Primary Service Area</p>
@@ -219,12 +219,9 @@ const Contact = () => {
         </div>
       </section>
 
+      {/* FIXED: Removed global overflow styles that break sticky headers */}
       <style dangerouslySetInnerHTML={{ __html: `
-        html, body {
-          width: 100%;
-          overflow-x: hidden !important;
-          touch-action: pan-y;
-        }
+        .leaflet-container { z-index: 1 !important; }
       `}} />
     </div>
   );
