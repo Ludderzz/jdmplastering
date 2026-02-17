@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@layer utilities {
+  .stroke-text {
+    -webkit-text-stroke: 2px #0f172a; /* Use your slate-900 or white color */
+    /* If you are on a dark background, use: -webkit-text-stroke: 2px white; */
+  }
+}
