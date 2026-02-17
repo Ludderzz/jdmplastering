@@ -12,13 +12,13 @@ const TopBar = () => {
             <span className="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span>
           </span>
           <p className="text-white text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">
-            Plastering & Rendering in <span className="text-amber-500">Clevedon</span> & surrounding areas
+            Plastering & Rendering in <span className="text-amber-500">Nailsea</span> & surrounding areas
           </p>
         </div>
 
         {/* WhatsApp Button */}
         <a 
-          href="https://wa.me/447XXXXXXXXX" // Replace with his actual number
+          href="https://wa.me/447896560566" // Replace with his actual number
           target="_blank" 
           rel="noopener noreferrer"
           className="flex items-center gap-2 bg-[#25D366] hover:bg-white hover:text-slate-900 text-white px-6 py-2 rounded-sm text-[10px] font-black transition-all duration-300 shadow-lg tracking-widest"

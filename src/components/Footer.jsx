@@ -71,10 +71,7 @@ const Footer = () => {
                 {/* SEO: Use tel: link for click-to-call tracking */}
                 <a href="tel:+447896560566" className="font-bold text-slate-200 hover:text-amber-500 transition-colors">07896 560566</a>
               </li>
-              <li className="flex items-center gap-4">
-                <span className="text-lg">✉️</span>
-                <a href="mailto:info@jdmplastering.co.uk" className="font-light text-slate-400 hover:text-amber-500 transition-colors">Email Us Directly</a>
-              </li>
+              
             </ul>
           </div>
         </div>
