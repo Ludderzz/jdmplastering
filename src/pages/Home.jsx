@@ -30,15 +30,15 @@ const Home = () => {
   ];
 
   const featured = [
-    { img: img1Outside, title: 'Coloured Rendering Clevedon', cat: 'Exterior', size: 'md:col-span-2' },
+    { img: img1Outside, title: ' Rendering Clevedon', cat: 'Exterior', size: 'md:col-span-2' },
     { img: img19Outside, title: 'Modern Facade Bristol', cat: 'Exterior', size: 'md:col-span-1' },
     { img: img8Inside, title: 'Smooth Plastering Nailsea', cat: 'Interior', size: 'md:col-span-1' },
     { img: img10Inside, title: 'Complete Refurbishment', cat: 'Interior', size: 'md:col-span-2' },
   ];
 
   const services = [
-    { title: 'Internal Plastering Nailsea', desc: 'Expert skimming and traditional lime plastering for a mirror-smooth finish.', img: internal },
-    { title: 'Coloured Rendering', desc: 'Through-coloured Weber & K-Rend solutions. Maintenance-free, weatherproof, and stunning.', img: pendering },
+    { title: 'Internal Plastering Nailsea', desc: 'Expert plastering and traditional lime plastering for a mirror-smooth finish.', img: internal },
+    { title: ' Rendering', desc: 'Through-coloured Weber & K-Rend solutions. Maintenance-free, weatherproof, and stunning.', img: pendering },
     { title: 'Dry Lining Somerset', desc: 'Modern boarding techniques for perfect alignment, insulation, and soundproofing.', img: dryling },
   ];
 

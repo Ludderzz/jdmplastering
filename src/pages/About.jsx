@@ -129,7 +129,7 @@ const About = () => {
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                 {[
-                  'Fully Insured & Local HQ',
+                  'Local HQ',
                   'Dust-Free Working Ethic',
                   'Free Professional Consultation',
                   'Coloured Render Specialists',

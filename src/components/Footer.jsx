@@ -78,7 +78,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.3em]">
-          <p className="text-slate-600 font-bold">&copy; {currentYear} JDM Plastering | Registered & Insured</p>
+          <p className="text-slate-600 font-bold">&copy; {currentYear} JDM Plastering | Registered</p>
           <div className="h-[1px] w-12 bg-white/5 my-4 md:hidden"></div>
           <p className="text-slate-700">
             Site by <span className="text-slate-500 hover:text-amber-500 transition-colors cursor-pointer">WebCircuitUK</span>
