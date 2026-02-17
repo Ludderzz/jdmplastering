@@ -25,33 +25,54 @@ const Home = () => {
   const specialistList = [
     "British Gypsum Plastering", "Traditional Internal Lime Plastering",
     "Professional Damp Proofing", "Original Sand & Cement Rendering",
-    "Traditional Lime Rendering", "Webber Monocouche Rendering",
-    "OCR Render Specialists", "K Rend Thin Coat Grit Render",
+    "Traditional Lime Rendering", "Coloured Weber Monocouche",
+    "OCR Render Specialists", "Coloured K Rend Thin Coat",
   ];
 
   const featured = [
-    { img: img1Outside, title: 'External Rendering Clevedon', cat: 'Exterior', size: 'md:col-span-2' },
+    { img: img1Outside, title: 'Coloured Rendering Clevedon', cat: 'Exterior', size: 'md:col-span-2' },
     { img: img19Outside, title: 'Modern Facade Bristol', cat: 'Exterior', size: 'md:col-span-1' },
     { img: img8Inside, title: 'Smooth Plastering Nailsea', cat: 'Interior', size: 'md:col-span-1' },
     { img: img10Inside, title: 'Complete Refurbishment', cat: 'Interior', size: 'md:col-span-2' },
   ];
 
   const services = [
-    { title: 'Internal Plastering Nailsea', desc: 'Achieving a mirror-smooth finish ready for high-end decorating.', img: internal },
-    { title: 'External Rendering Clevedon', desc: 'Weatherproof, durable solutions including K-Rend and Monocouche.', img: pendering },
-    { title: 'Dry Lining Somerset', desc: 'Modern boarding techniques for perfect alignment and insulation.', img: dryling },
+    { title: 'Internal Plastering Nailsea', desc: 'Expert skimming and traditional lime plastering for a mirror-smooth finish.', img: internal },
+    { title: 'Coloured Rendering', desc: 'Through-coloured Weber & K-Rend solutions. Maintenance-free, weatherproof, and stunning.', img: pendering },
+    { title: 'Dry Lining Somerset', desc: 'Modern boarding techniques for perfect alignment, insulation, and soundproofing.', img: dryling },
   ];
+
+  // LOCAL SEO SCHEMA (The "Google Juice")
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "PlasteringBusiness",
+    "name": "JDM Plastering",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Nailsea",
+      "addressRegion": "North Somerset",
+      "addressCountry": "UK"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 51.4291,
+      "longitude": -2.7628
+    },
+    "url": "https://YOUR_DOMAIN.com",
+    "telephone": "YOUR_PHONE_NUMBER",
+    "priceRange": "$$",
+    "image": heroImg,
+    "description": "Specialist plastering and coloured rendering services in Nailsea, Clevedon, and Bristol."
+  };
 
   return (
     <div className="bg-white overflow-x-hidden antialiased">
       <Helmet>
-        <title>JDM Plastering | Expert Plastering & Rendering Nailsea & Clevedon</title>
-        <meta name="description" content="Professional plastering and rendering in Nailsea, Clevedon, and Bristol. Over 15 years experience." />
+        <title>JDM Plastering | Coloured Rendering & Plastering Nailsea & Clevedon</title>
+        <meta name="description" content="Nailsea's rendering specialists. Offering Weber Monocouche & K-Rend coloured rendering, internal plastering, and damp proofing in Somerset & Bristol." />
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
         
-        {/* CRITICAL MOBILE FIX: Preload the hero image before the browser even parses the body */}
         <link rel="preload" as="image" href={heroImg} fetchpriority="high" />
-
-        {/* SPEED BOOST: Pre-connect to Map Tile Servers */}
         <link rel="preconnect" href="https://a.basemaps.cartocdn.com" />
         <link rel="preconnect" href="https://b.basemaps.cartocdn.com" />
         <link rel="preconnect" href="https://c.basemaps.cartocdn.com" />
@@ -62,7 +83,7 @@ const Home = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src={heroImg} 
-            alt="High quality plastering services" 
+            alt="Coloured Rendering and Plastering Specialist Nailsea" 
             fetchpriority="high"
             loading="eager"
             decoding="async"
@@ -76,12 +97,12 @@ const Home = () => {
             <div className="flex items-center gap-2 mb-6">
               <div className="h-[2px] w-8 bg-amber-500"></div>
               <span className="text-amber-500 text-sm font-bold uppercase tracking-[0.2em]">
-                Plastering & Rendering Specialist | Nailsea
+                Coloured Render & Plastering Specialist | Nailsea
               </span>
             </div>
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-[0.85] mb-12 tracking-tighter">
-              MASTER <br />
-              <span className="text-transparent stroke-text">PLASTERING</span>
+              EXPERT <br />
+              <span className="text-transparent stroke-text uppercase">Plastering</span>
             </h1>
             <div className="flex flex-wrap gap-5">
               <Link to="/contact" className="px-10 py-5 bg-amber-500 text-slate-900 font-black rounded-sm hover:bg-white transition-colors duration-300 uppercase text-sm tracking-widest">

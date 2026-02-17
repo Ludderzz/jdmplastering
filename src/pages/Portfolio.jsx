@@ -1,25 +1,49 @@
 import { useState, useMemo } from 'react';
 import { Helmet } from 'react-helmet-async';
 
-// 1. Performance Optimization: Keep eager true for metadata, but we will handle rendering carefully
+// Performance Optimization
 const imageModules = import.meta.glob('../assets/portfolio/*.{png,jpg,jpeg,PNG,JPG,JPEG,webp,WEBP}', { eager: true });
 
 const projectImages = Object.entries(imageModules).map(([path, mod], index) => {
   const isOutside = path.toLowerCase().includes('outside');
-  const fileName = path.split('/').pop().split('.')[0].replace(/-/g, ' ');
+  const fileName = path.split('/').pop().split('.')[0]; // e.g., "img1-outside"
   
-  // Geographic Keyword Rotation for SEO "More Everything"
+  // Geographic Keyword Rotation for Local SEO
   const areas = ['Nailsea', 'Clevedon', 'Bristol', 'Portishead', 'Yatton', 'Backwell'];
   const seoArea = areas[index % areas.length]; 
 
+  // SEO Description Logic - specifically highlighting "Coloured" for outside work
+  const cleanTitle = fileName.replace(/-/g, ' ');
+  const categoryTitle = isOutside ? "Coloured Rendering" : "Internal Plastering";
+  
   return {
     id: index,
     src: mod.default,
+    fileName: fileName, // Kept for sorting
     category: isOutside ? 'External' : 'Internal',
-    title: `${fileName.charAt(0).toUpperCase() + fileName.slice(1)}`,
-    seoAlt: `${fileName} - Expert Plastering and Rendering project in ${seoArea}, North Somerset`,
+    title: `${fileName.charAt(0).toUpperCase() + cleanTitle.slice(1)}`,
+    seoAlt: `${categoryTitle} project in ${seoArea} - High quality finish by JDM Plastering`,
     area: seoArea
   };
+});
+
+// --- THE FIX: SORTING YOUR BEST WORK TO THE TOP ---
+const sortedProjects = [...projectImages].sort((a, b) => {
+  const priorityFiles = [
+    'img6-inside',
+    'img17-outside',
+    'img1-outside',
+    'img8-inside'
+    // 'img6-inside' is requested twice in your list, so it will stay at the top once
+  ];
+  
+  const aIndex = priorityFiles.indexOf(a.fileName);
+  const bIndex = priorityFiles.indexOf(b.fileName);
+  
+  if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
+  if (aIndex !== -1) return -1;
+  if (bIndex !== -1) return 1;
+  return 0;
 });
 
 const Portfolio = () => {
@@ -27,37 +51,28 @@ const Portfolio = () => {
   const [visibleCount, setVisibleCount] = useState(12);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  // Memoize filtered results to prevent unnecessary re-renders (Performance boost)
   const filtered = useMemo(() => {
     return filter === 'All' 
-      ? projectImages 
-      : projectImages.filter(p => p.category === filter);
+      ? sortedProjects 
+      : sortedProjects.filter(p => p.category === filter);
   }, [filter]);
 
-  const siteUrl = "https://www.jdmplastering.co.uk"; // Replace with your live URL
+  const siteUrl = "https://www.jdmplastering.co.uk";
 
   return (
     <div className="bg-white min-h-screen pb-20 overflow-auto">
       <Helmet>
-        <title>Project Gallery | JDM Plastering & Rendering Portfolio</title>
-        <meta name="description" content="Browse our gallery of professional plastering and rendering projects. From K-Rend in Clevedon to interior skimming in Nailsea and Bristol." />
+        <title>Portfolio | Coloured Rendering & Plastering Gallery Nailsea</title>
+        <meta name="description" content="View our expert plastering and coloured rendering projects in Nailsea, Clevedon and Bristol. See the quality of our Weber and K-Rend finishes." />
         <link rel="canonical" href={`${siteUrl}/portfolio`} />
         
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [{
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": siteUrl
-            },{
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Portfolio",
-              "item": `${siteUrl}/portfolio`
-            }]
+            "@type": "ImageGallery",
+            "name": "JDM Plastering Work Gallery",
+            "description": "Gallery of internal plastering and external coloured rendering in Somerset.",
+            "contentLocation": "Nailsea, UK"
           })}
         </script>
       </Helmet>
@@ -69,12 +84,12 @@ const Portfolio = () => {
         </div>
         
         <div className="relative z-10 px-4">
-            <span className="text-amber-500 text-xs font-black uppercase tracking-[0.3em] mb-4 block underline decoration-amber-500/30 underline-offset-8">Our Craftsmanship</span>
+            <span className="text-amber-500 text-xs font-black uppercase tracking-[0.3em] mb-4 block underline decoration-amber-500/30 underline-offset-8">Proven Quality</span>
             <h1 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tighter">
               WORK <span className="text-transparent" style={{ WebkitTextStroke: '1.5px #f59e0b' }}>GALLERY</span>
             </h1>
             <p className="text-slate-400 max-w-xl mx-auto font-light leading-relaxed">
-                A showcase of <span className="text-white font-medium italic">flawless finishes</span>. Explore our recent external rendering and internal plastering projects.
+                Showcasing <span className="text-white font-medium italic">Through-Coloured Rendering</span> and mirror-finish plastering across <span className="text-white">North Somerset</span>.
             </p>
         </div>
       </section>
@@ -92,7 +107,7 @@ const Portfolio = () => {
                     : 'border-transparent text-slate-400 hover:text-slate-600'
                 }`}
             >
-                {cat}
+                {cat === 'External' ? 'Coloured Rendering' : cat === 'Internal' ? 'Internal Plastering' : 'All Projects'}
             </button>
             ))}
         </div>
@@ -110,16 +125,16 @@ const Portfolio = () => {
               <img 
                 src={img.src} 
                 alt={img.seoAlt} 
-                // Performance Boost: Only load the first 4 images with "eager" priority
-                loading={index < 4 ? "eager" : "lazy"} 
-                fetchpriority={index < 4 ? "high" : "low"}
+                loading={index < 6 ? "eager" : "lazy"} 
+                fetchpriority={index < 6 ? "high" : "low"}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
               />
               
               <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/80 transition-all duration-500 flex flex-col items-center justify-center p-6 opacity-0 group-hover:opacity-100 text-center">
-                 <span className="text-amber-500 text-[10px] font-black uppercase tracking-[0.2em] mb-2">{img.category} Work</span>
-                 <h3 className="text-white font-bold tracking-tight text-lg uppercase leading-tight">{img.title}</h3>
-                 <p className="text-slate-400 text-[10px] mt-1 uppercase tracking-tighter">Location: {img.area}</p>
+                 <span className="text-amber-500 text-[10px] font-black uppercase tracking-[0.2em] mb-2">{img.category} Specialist</span>
+                 <h3 className="text-white font-bold tracking-tight text-lg uppercase leading-tight">
+                 </h3>
+                 <p className="text-slate-400 text-[10px] mt-1 uppercase tracking-tighter">Project Area: {img.area}</p>
                  <div className="mt-4 h-8 w-8 rounded-full border border-amber-500 flex items-center justify-center text-amber-500 group-hover:bg-amber-500 group-hover:text-slate-900 transition-all">
                     +
                  </div>
@@ -152,12 +167,14 @@ const Portfolio = () => {
                 <img 
                     src={selectedImage.src} 
                     alt={selectedImage.seoAlt} 
-                    className="max-h-[70vh] w-auto mx-auto rounded-sm shadow-2xl"
+                    className="max-h-[70vh] w-auto mx-auto rounded-sm shadow-2xl border border-white/10"
                 />
                 <div className="mt-8 text-center bg-white/5 p-6 backdrop-blur-sm rounded-lg border border-white/10">
-                    <span className="text-amber-500 text-xs font-black uppercase tracking-widest">{selectedImage.category} Specialist</span>
-                    <h2 className="text-white text-4xl font-black uppercase tracking-tighter mt-2">{selectedImage.title}</h2>
-                    <p className="text-slate-400 mt-2 font-light">Completed in {selectedImage.area}, North Somerset.</p>
+                    <span className="text-amber-500 text-xs font-black uppercase tracking-widest">{selectedImage.category} Project</span>
+                    <h2 className="text-white text-4xl font-black uppercase tracking-tighter mt-2">
+                        {selectedImage.fileName.includes('outside') ? 'Through-Coloured Rendering' : 'Internal Plastering'}
+                    </h2>
+                    <p className="text-slate-400 mt-2 font-light italic">Expertly finished in {selectedImage.area}, North Somerset.</p>
                     <button 
                         onClick={() => setSelectedImage(null)}
                         className="mt-6 text-amber-500 uppercase text-[10px] font-bold tracking-widest border-b border-amber-500 pb-1"

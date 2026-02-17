@@ -30,32 +30,38 @@ const About = () => {
   const specialistList = [
     "Original Sand & Cement Rendering",
     "Traditional Lime Rendering",
+    "Coloured Weber Monocouche",
+    "Coloured K Rend Thin Coat",
     "British Gypsum Plastering",
-    "Traditional Internal Lime Plastering",
+    "Internal Lime Plastering",
     "Damp Proofing Specialist",
-    "Webber Monocouche Rendering",
-    "K Rend Thin Coat Grit Render",
-    "OCR Render"
+    "OCR Render Systems"
   ];
 
   return (
     <div className="bg-white max-w-full overflow-x-hidden relative">
       <Helmet>
-        <title>About JDM Plastering | Specialist Renderers in Somerset</title>
-        <meta name="description" content="With 15+ years of experience, JDM Plastering provides expert internal plastering and external rendering across Nailsea, Clevedon, and Bristol. Specialist in K-Rend and Lime Plaster." />
+        <title>About JDM Plastering | Coloured Rendering Specialists Nailsea</title>
+        <meta name="description" content="15+ years of excellence in internal plastering and coloured rendering. Serving Nailsea, Clevedon, and Bristol with premium Weber and K-Rend finishes." />
         
         {/* SERVICE AREA & SPECIALIST SCHEMA */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "LocalBusiness",
+            "@type": "PlasteringBusiness",
             "name": "JDM Plastering",
-            "description": "Specialist plastering and rendering services in North Somerset.",
-            "url": "https://yourwebsite.com/about",
+            "description": "Specialist internal plastering and coloured rendering services in North Somerset.",
+            "url": "https://yourwebsite.com/about", // UPDATE TO YOUR ACTUAL DOMAIN
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Nailsea",
+              "addressRegion": "North Somerset",
+              "addressCountry": "UK"
+            },
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
-              "name": "Plastering Services",
-              "itemListElement": specialistList.map(service => ({
+              "name": "Plastering & Rendering Services",
+              "itemListElement": specialistList.map((service, index) => ({
                 "@type": "Offer",
                 "itemOffered": {
                   "@type": "Service",
@@ -67,7 +73,8 @@ const About = () => {
               { "@type": "City", "name": "Nailsea" },
               { "@type": "City", "name": "Clevedon" },
               { "@type": "City", "name": "Portishead" },
-              { "@type": "City", "name": "Bristol" }
+              { "@type": "City", "name": "Bristol" },
+              { "@type": "City", "name": "Yatton" }
             ]
           })}
         </script>
@@ -78,7 +85,7 @@ const About = () => {
         <div className="absolute top-0 right-0 w-1/3 h-full bg-amber-500/5 -skew-x-12 translate-x-20"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
           <span className="text-amber-500 text-sm font-black uppercase tracking-[0.3em] mb-4 block underline decoration-amber-500/20 underline-offset-8">
-            The Story Behind the Smoothness
+            Nailsea's Trusted Finishers
           </span>
           <h1 className="text-5xl md:text-6xl font-black text-white mb-6 tracking-tighter uppercase">
             About <span className="text-transparent" style={{ WebkitTextStroke: '1px #f59e0b' }}>JDM Plastering</span>
@@ -96,19 +103,19 @@ const About = () => {
               <div className="relative z-10 aspect-[4/5] bg-slate-200 rounded-2xl overflow-hidden shadow-2xl">
                 <img 
                   src={img10Inside} 
-                  alt="Professional Plastering Work in North Somerset" 
+                  alt="Specialist Coloured Rendering in Nailsea" 
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="absolute -bottom-8 -right-8 bg-slate-900 text-white p-8 rounded-2xl shadow-2xl border border-white/10 hidden md:block z-20">
                 <p className="text-5xl font-black text-amber-500">15+</p>
-                <p className="text-xs font-bold uppercase tracking-widest text-slate-400">Years of <br/> Excellence</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-slate-400">Years of <br/> Craftsmanship</p>
               </div>
             </div>
 
             <div className="space-y-8">
               <header>
-                <h2 className="text-sm font-black text-amber-600 uppercase tracking-widest mb-2">Our Mission</h2>
+                <h2 className="text-sm font-black text-amber-600 uppercase tracking-widest mb-2">Our Reputation</h2>
                 <h3 className="text-4xl font-bold text-slate-900 leading-tight">Expertise You Can Trust, <br/>Quality You Can Feel.</h3>
               </header>
               <div className="space-y-4 text-slate-600 text-lg font-light leading-relaxed">
@@ -116,16 +123,16 @@ const About = () => {
                   JDM Plastering was built on a foundation of precision and pride. Serving homeowners in <span className="text-slate-900 font-semibold">Nailsea, Clevedon, and across Bristol</span>, we have grown into a leading service known for one thing: <strong>The Perfect Finish.</strong>
                 </p>
                 <p>
-                  We specialize in high-end finishes, from modern <span className="text-slate-900 font-semibold">K-Rend Thin Coat Systems</span> to traditional <span className="text-slate-900 font-semibold">Internal Lime Plastering</span>. We treat every home with the same obsessive attention to detail we would our own.
+                  We specialize in high-end finishes, from maintenance-free <span className="text-slate-900 font-semibold">Coloured Through-Render Systems</span> (Weber & K-Rend) to traditional <span className="text-slate-900 font-semibold">Internal Lime Plastering</span>. We treat every home with the same obsessive attention to detail we would our own.
                 </p>
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                 {[
-                  'Fully Insured & Certified',
+                  'Fully Insured & Local HQ',
                   'Dust-Free Working Ethic',
                   'Free Professional Consultation',
-                  'Residential & Commercial Specialists',
+                  'Coloured Render Specialists',
                 ].map((item, i) => (
                   <div key={i} className="flex items-center space-x-3">
                     <div className="flex-shrink-0 w-5 h-5 bg-amber-500 rounded-full flex items-center justify-center">
@@ -178,7 +185,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto text-center mb-12">
             <h2 className="text-amber-600 text-sm font-black uppercase tracking-[0.4em] mb-2">Local Coverage</h2>
             <h3 className="text-4xl font-black text-slate-900 uppercase tracking-tighter">Areas We Serve</h3>
-            <p className="mt-4 text-slate-500 font-light">Providing expert plastering across North Somerset and the West Country.</p>
+            <p className="mt-4 text-slate-500 font-light">Specialist plastering and coloured rendering across North Somerset.</p>
         </div>
         <div className="max-w-5xl mx-auto">
           <div className="relative group">
@@ -219,8 +226,8 @@ const About = () => {
             </div>
             
             <div className="absolute -bottom-6 right-6 md:right-10 bg-slate-900 text-white px-8 py-4 rounded-xl shadow-2xl z-20 border-b-4 border-amber-500">
-              <p className="text-amber-500 font-black text-xl">SERVICE RADIUS</p>
-              <p className="text-[10px] uppercase tracking-widest font-bold opacity-70">30 Mile Coverage from Nailsea</p>
+              <p className="text-amber-500 font-black text-xl">LOCAL EXPERTS</p>
+              <p className="text-[10px] uppercase tracking-widest font-bold opacity-70">Nailsea, Clevedon & Bristol</p>
             </div>
           </div>
         </div>
@@ -229,9 +236,9 @@ const About = () => {
       {/* --- SERVICE RADIUS BANNER --- */}
       <section className="bg-amber-500 py-16 px-4">
         <div className="max-w-7xl mx-auto text-center">
-          <p className="text-slate-900 uppercase tracking-[0.3em] text-sm font-black mb-4">Local & Reliable</p>
+          <p className="text-slate-900 uppercase tracking-[0.3em] text-sm font-black mb-4">Reliable & Professional</p>
           <h2 className="text-3xl md:text-4xl text-slate-900 font-black italic tracking-tight leading-tight">
-            "High-quality workmanship serving Clevedon, Bristol, and the surrounding North Somerset region."
+            "High-quality coloured rendering serving Nailsea, Clevedon, and the West Country."
           </h2>
         </div>
       </section>
