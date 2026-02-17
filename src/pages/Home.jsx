@@ -13,7 +13,7 @@ import internal from "../assets/portfolio/inernalplastering.webp";
 import pendering from "../assets/portfolio/pendering.webp";
 
 // Lazy Load the Map component
-const MapComponent = lazy(() => import('../components/MapComponent'));
+const MapComponent = lazy(() => import('../components/ServiceMap'));
 
 const Home = () => {
   const mapCenter = [51.4600, -2.7200]; 
